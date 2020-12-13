@@ -16,94 +16,96 @@ Olhe o Guia de configuranção para instruções detalhadas de como configurar o
 | <img src="docs/_static/chip-esp32.svg" height="85" alt="ESP32"> |  <ul><li>[Versão estável](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/) </li><li>[Ultima versão (master branch)](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/) </li></ul> |
 | <img src="docs/_static/chip-esp32-s2.svg" height="100" alt="ESP32-S2"> | <ul><li>[Ultima versão (master branch)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/) </li></ul> |
 
-**Note:** Each ESP-IDF release has its own documentation. Please see Section [Versions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/versions.html) how to find documentation and how to checkout specific release of ESP-IDF.
+**Nota:** Cada versão do ESP-IDF tem sua própria documentação. Consulte a seção [Versões](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/versions.html) para saber como encontrar a documentação e como verificar a versão específica do ESP-IDF.
 
-### Non-GitHub forks
 
-ESP-IDF uses relative locations as its submodules URLs ([.gitmodules](.gitmodules)). So they link to GitHub.
-If ESP-IDF is forked to a Git repository which is not on GitHub, you will need to run the script
-[tools/set-submodules-to-github.sh](tools/set-submodules-to-github.sh) after git clone.
-The script sets absolute URLs for all submodules, allowing `git submodule update --init --recursive` to complete.
-If cloning ESP-IDF from GitHub, this step is not needed.
+### Forks fora do GitHub
 
-## Finding a Project
+ESP-IDF usa localizações relativas como suas URLs de submódulos ([.gitmodules](.gitmodules)). Então, eles se conectam ao GitHub. Se ESP-IDF for bifurcado para um repositório Git que não está no GitHub, você precisará executar o script [tools/set-submodules-to-github.sh](tools/set-submodules-to-github.sh) após fazer o clone do git. O script define URLs absolutos para todos os submódulos, permitindo que o comando `git submodule update --init --recursive` seja concluído. Se for clonar ESP-IDF do GitHub, esta etapa não é necessária.
 
-As well as the [esp-idf-template](https://github.com/espressif/esp-idf-template) project mentioned in Getting Started, ESP-IDF comes with some example projects in the [examples](examples) directory.
 
-Once you've found the project you want to work with, change to its directory and you can configure and build it.
+## Encontrando um Projeto
 
-To start your own project based on an example, copy the example project directory outside of the ESP-IDF directory.
+Assim como o projeto [esp-idf-template](https://github.com/espressif/esp-idf-template) mencionado em Começando, ESP-IDF vem com alguns projetos de exemplo no diretório de [examplos](examples).
 
-# Quick Reference
+Depois de encontrar o projeto com o qual deseja trabalhar, mude para seu diretório e você pode configurá-lo e construí-lo.
 
-See the Getting Started guide links above for a detailed setup guide. This is a quick reference for common commands when working with ESP-IDF projects:
+Para iniciar seu próprio projeto com base em um exemplo, copie o diretório do projeto de exemplo para fora do diretório ESP-IDF.
 
-## Setup Build Environment
 
-(See the Getting Started guide listed above for a full list of required steps with more details.)
+# Referência Rápida
 
-* Install host build dependencies mentioned in the Getting Started guide.
-* Run the install script to set up the build environment. The options include `install.bat` or `install.ps1` for Windows, and `install.sh` or `install.fish` for Unix shells.
-* Run the export script on Windows (`export.bat`) or source it on Unix (`source export.sh`) in every shell environment before using ESP-IDF.
+Consulte os links do guia de primeiros passos acima para obter um guia de configuração detalhado. Esta é uma referência rápida para comandos comuns ao se trabalhar com projetos ESP-IDF:
 
-## Configuring the Project
+## Configuração do Ambiente de Compilação
 
-* `idf.py set-target <chip_name>` sets the target of the project to `<chip_name>`. Run `idf.py set-target` without any arguments to see a list of supported targets.
-* `idf.py menuconfig` opens a text-based configuration menu where you can configure the project.
+(Consulte o guia de primeiros passos listado acima para obter uma lista completa das etapas necessárias com mais detalhes.)
 
-## Compiling the Project
+* Instale as dependências de compilação do host mencionadas no guia de primeiros passos.
+* Execute o script de instalação para configurar o ambiente de compilação. As opções incluem `install.bat` ou o `install.ps1` para Windows e `install.sh` ou `install.fish` para sistemas Unix.
+* Execute o script de exportação no Windows (`export.bat`) ou o fonte no Unix (`source export.sh`) em cada ambiente antes de usar ESP-IDF.
+
+
+## Configurando o Projeto
+
+* `idf.py set-target <chip_name>` define o objetivo do projeto para `<chip_name>`. Execute `idf.py set-target` sem nenhum argumento para ver uma lista de destinos suportados.
+* `idf.py menuconfig` abre um menu de configuração baseado em texto onde você pode configurar o projeto.
+
+## Compilando o Projeto
 
 `idf.py build`
 
-... will compile app, bootloader and generate a partition table based on the config.
+... irá compilar o app, bootloader e gerar uma tabela de partição baseada na configuração.
 
-## Flashing the Project
+## Gravando o Projeto
 
-When the build finishes, it will print a command line to use esptool.py to flash the chip. However you can also do this automatically by running:
+Quando a compilação terminar, ele irá imprimir uma linha de comando para usar no arquivo esptool.py para atualizar o chip. No entanto, você também pode fazer isso automaticamente executando:
 
 `idf.py -p PORT flash`
 
-Replace PORT with the name of your serial port (like `COM3` on Windows, `/dev/ttyUSB0` on Linux, or `/dev/cu.usbserial-X` on MacOS. If the `-p` option is left out, `idf.py flash` will try to flash the first available serial port.
 
-This will flash the entire project (app, bootloader and partition table) to a new chip. The settings for serial port flashing can be configured with `idf.py menuconfig`.
+Substitua PORT pelo nome da sua porta serial (como `COM3` no Windows, `/dev/ttyUSB0` no Linux ou `/dev/cu.usbserial-X` no MacOS. Se a opção `-p` for deixada de fora o idf.py tentará se conectar na primeira porta serial disponível.
 
-You don't need to run `idf.py build` before running `idf.py flash`, `idf.py flash` will automatically rebuild anything which needs it.
+Isso irá atualizar todo o projeto (app, bootloader e tabela de partição) para um novo chip. As configurações para a gravação da porta serial podem ser configuradas com `idf.py menuconfig`.
 
-## Viewing Serial Output
+Você não precisa rodar o comando `idf.py build` antes de rodar o `idf.py flash`, `idf.py flash` irá reconstruir automaticamente qualquer coisa que precise.
 
-The `idf.py monitor` target uses the [idf_monitor tool](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/idf-monitor.html) to display serial output from ESP32 or ESP32-S Series SoCs. idf_monitor also has a range of features to decode crash output and interact with the device. [Check the documentation page for details](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/idf-monitor.html).
+## Visualizando a saída serial
 
-Exit the monitor by typing Ctrl-].
+O destino do `idf.py monitor` usa a ferramenta [idf_monitor tool](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/idf-monitor.html) para exibir a saída serial dos SoCs ESP32 ou ESP32-S. O idf_monitor também possui uma gama de recursos para decodificar  uma quebra na saída ou na interação com o dispositivo. [Verifique a página de documentação para obter detalhes](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/idf-monitor.html).
 
-To build, flash and monitor output in one pass, you can run:
+Saia do monitor digitando Ctrl-].
+
+Para criar, atualizar e monitorar a saída em um passo, você pode executar:
 
 `idf.py flash monitor`
 
-## Compiling & Flashing Only the App
+## Compilando e Atualizando apenas o App
 
-After the initial flash, you may just want to build and flash just your app, not the bootloader and partition table:
+Após a gravação inicial, você pode querer apenas construir e atualizar apenas o seu app, não o bootloader e a tabela de partição:
 
-* `idf.py app` - build just the app.
-* `idf.py app-flash` - flash just the app.
+* `idf.py app` - Contrói apenas o app.
+* `idf.py app-flash` - Grava apenas o app.
 
-`idf.py app-flash` will automatically rebuild the app if any source files have changed.
+`idf.py app-flash` irá reconstruir automaticamente o app se algum arquivo de origem for alterado.
 
-(In normal development there's no downside to reflashing the bootloader and partition table each time, if they haven't changed.)
+(No desenvolvimento normal, não há nenhuma desvantagem em atualizar o bootloader e a tabela de partição a cada vez, se eles não tiverem mudado.)
 
-## Erasing Flash
+## Apagando a Flash
 
-The `idf.py flash` target does not erase the entire flash contents. However it is sometimes useful to set the device back to a totally erased state, particularly when making partition table changes or OTA app updates. To erase the entire flash, run `idf.py erase_flash`.
+O destino do arquivo `idf.py flash` não apaga todo o conteúdo da flash. No entanto, às vezes é útil definir o dispositivo de volta para um estado totalmente apagado, especialmente ao fazer alterações na tabela de partição ou atualizações de aplicativos OTA. Para apagar toda a flash, execute `idf.py erase_flash`.
 
-This can be combined with other targets, ie `idf.py -p PORT erase_flash flash` will erase everything and then re-flash the new app, bootloader and partition table.
+Isso pode ser combinado com outros dispositivos, por exemplo, `idf.py -p PORT erase_flash flash` apagará tudo e então atualizará novamente o novo aplicativo, bootloader e tabela de partição.
 
-# Resources
 
-* Documentation for the latest version: https://docs.espressif.com/projects/esp-idf/. This documentation is built from the [docs directory](docs) of this repository.
+# Outras Fontes
 
-* The [esp32.com forum](https://esp32.com/) is a place to ask questions and find community resources.
+* Documentação da ultima versão: https://docs.espressif.com/projects/esp-idf/. Este documento foi criado a partir do [Diretório docs](docs) deste repositório.
 
-* [Check the Issues section on github](https://github.com/espressif/esp-idf/issues) if you find a bug or have a feature request. Please check existing Issues before opening a new one.
+* O fórum [esp32.com forum](https://esp32.com/) é um lugar para fazer perguntas e encontrar recursos na comunidade.
 
-* If you're interested in contributing to ESP-IDF, please check the [Contributions Guide](https://docs.espressif.com/projects/esp-idf/en/latest/contribute/index.html).
+* [Verifique a seção Problemas no github](https://github.com/espressif/esp-idf/issues) caso você encontrar um bug ou tiver uma solicitação de recurso. Verifique os problemas existentes antes de abrir um novo.
+
+* Se você estiver interessado em contribuir para o ESP-IDF, consulte o [Guia de contribuições](https://docs.espressif.com/projects/esp-idf/en/latest/contribute/index.html)..
 
 
