@@ -13,8 +13,8 @@ Olhe o Guia de configuranção para instruções detalhadas de como configurar o
 
 | Chip | Guia de primeiros passos para ESP-IDF |
 |:----:|:----|
-| <img src="docs/_static/chip-esp32.svg" height="85" alt="ESP32"> |  <ul><li>[estável](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/) versão</li><li>[latest (master branch)](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/) version</li></ul> |
-| <img src="docs/_static/chip-esp32-s2.svg" height="100" alt="ESP32-S2"> | <ul><li>[latest (master branch)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/) version</li></ul> |
+| <img src="docs/_static/chip-esp32.svg" height="85" alt="ESP32"> |  <ul><li>[Versão estável](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/) </li><li>[Ultima versão (master branch)](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/) </li></ul> |
+| <img src="docs/_static/chip-esp32-s2.svg" height="100" alt="ESP32-S2"> | <ul><li>[Ultima versão (master branch)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/) </li></ul> |
 
 **Note:** Each ESP-IDF release has its own documentation. Please see Section [Versions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/versions.html) how to find documentation and how to checkout specific release of ESP-IDF.
 
