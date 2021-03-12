@@ -1,6 +1,7 @@
 # Framework de Desenvolvimento para IoT da Espressif
 
-* [中文版](./README_CN.md) * [English](./README_en.md)
+* [中文版](./README_CN.md) 
+* [English](./README_en.md)
 
 ESP-IDF é o framework de desenvolvimento oficial para a série de SOCs **ESP32** e o **ESP32-S** fornecida para Windows, Linux e macOS. 
 
