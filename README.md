@@ -98,11 +98,9 @@ O destino do arquivo `idf.py flash` não apaga todo o conteúdo da flash. No ent
 
 Isso pode ser combinado com outros dispositivos, por exemplo, `idf.py -p PORT erase_flash flash` apagará tudo e então atualizará novamente o novo aplicativo, bootloader e tabela de partição.
 
-# Começando em Português do Brasil
+## Começando em Português do Brasil
 
-
-
-# Outras Fontes
+## Outras Fontes
 
 * Documentação da ultima versão: https://docs.espressif.com/projects/esp-idf/. Este documento foi criado a partir do [Diretório docs](docs) deste repositório.
 
