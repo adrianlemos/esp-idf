@@ -13,9 +13,9 @@ Get Started
 
 .. Please keep README.md in sync with these instructions.
 
-This document is intended to help you set up the software development environment for the hardware based on the {IDF_TARGET_NAME} chip by Espressif.
+Este documento tem como objetivo ajudá-lo a configurar o ambiente de desenvolvimento para o hardware baseado no {IDF_TARGET_NAME} chipe da Espressif.
 
-After that, a simple example will show you how to use ESP-IDF (Espressif IoT Development Framework) for menu configuration, then for building and flashing firmware onto an {IDF_TARGET_NAME} board.
+Depois disso, um exemplo simples mostrará como usar ESP-IDF (Espressif IoT Development Framework) para a configuração do menu, em seguida a construição e gravação do firmware em uma placa {IDF_TARGET_NAME}.
 
 .. include-build-file:: inc/version-note.inc
 
